@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Articles</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+  </head>
+
+  <body>
+    <th:block th:include="/header"></th:block>
+    <h1>Articles</h1>
+    <div>
+      <a href="addArticle">Add Article</a>
+      | &nbsp;
+      <a href="editArticle">Edit Article</a>
+      <br/><br/>
+      <table border="1">
+        <tr>
+          <th>Id</th>
+          <th>Article</th>
+        </tr>
+        <tr th:each="article : ${articles}">
+          <td th:utext="${article.id}">..</td>
+          <td th:utext="${article.name}">..</td>
+          <td>
+            <form th:action="@{/deleteArticle}" method="post">
+              <input type="hidden" name="id" th:value="${article.id}" />
+              <input type="submit" value="Delete" class="btn btn-danger" />
+            </form>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br/><br/>
+    <th:block th:include="/header"></th:block>
+  </body>
+</html>

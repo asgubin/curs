@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+  <meta charset="UTF-8" />
+  <title>Operations</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+
+<body>
+<th:block th:include="/header"></th:block>
+<h1>Operations</h1>
+<div>
+  <a href="addOperation">Add Operation</a>
+  | &nbsp;
+  <a href="editOperation">Edit Operation</a>
+  <br/><br/>
+  <table border="1">
+    <tr>
+      <th>Id</th>
+      <th>Article</th>
+      <th>Debit</th>
+      <th>Credit</th>
+      <th>Create Date</th>
+      <th>Balance</th>
+
+    </tr>
+    <tr th:each="operation : ${operations}">
+      <td th:utext="${operation.id}">..</td>
+      <td th:utext="${operation.article_id.name}">..</td>
+      <td th:utext="${operation.debit}">..</td>
+      <td th:utext="${operation.credit}">..</td>
+      <td th:utext="${operation.createDate}">..</td>
+      <td th:utext="${operation.balanceId?.id}">..</td>
+      <td>
+        <form th:action="@{/deleteOperation}" method="post">
+          <input type="hidden" name="id" th:value="${operation.id}" />
+          <input type="submit" value="Delete" class="btn btn-danger" />
+        </form>
+      </td>
+
+    </tr>
+  </table>
+</div>
+<br/><br/>
+
+<th:block th:include="/header"></th:block>
+</body>
+</html>

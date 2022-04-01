@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+
+    <head>
+        <meta charset="UTF-8" />
+        <title>Add Article</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    </head>
+
+    <body>
+        <th:block th:include="/header"></th:block>
+        <h1>Create Article</h1>
+
+        <form th:action="@{/saveArticle}" method="POST">
+            <table>
+            <tr>
+                <th>Name</th>
+            <th>
+                <input type="text" th:name="name"/>
+            </th>
+            </tr>
+            <tr>
+            <th></th>
+            <th></th>
+            <th>
+                <input type="submit" value="Add"/>
+            </th>
+            </tr>
+        </table>
+        </form>
+    </body>
+</html>

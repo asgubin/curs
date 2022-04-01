@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit Article</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+
+<body>
+<th:block th:include="/header"></th:block>
+<h1>Edit Article</h1>
+
+<form th:action="@{/saveEditArticle}" method="POST">
+  <table>
+    <tr>
+      <th>Select Article For Edit</th>
+      <th>
+        <select th:name="id">
+          <option value="0">Select Article For Edit</option>
+          <option th:each="article : ${articles}" th:value="${article.id}" th:text="${article.name}"></option>
+        </select>
+      </th>
+    </tr>
+    <tr>
+      <th>Set New Name</th>
+      <th>
+        <input type="text" th:name="name"/>
+      </th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>
+        <input type="submit" value="Edit"/>
+      </th>
+    </tr>
+  </table>
+</form>
+
+</body>
+</html>

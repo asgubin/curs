@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+  <meta charset="UTF-8" />
+  <title>Balances</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+
+<body>
+<th:block th:include="/header"></th:block>
+<h1>Balances</h1>
+<div>
+  <a href="createBalance">Create Balance</a>
+  <br/><br/>
+
+  <table border="1">
+    <tr>
+      <th>Id</th>
+      <th>Create Date</th>
+      <th>Debit</th>
+      <th>Credit</th>
+      <th>Amount</th>
+    </tr>
+    <tr th:each="balance : ${balances}">
+      <td th:utext="${balance.id}">..</td>
+      <td th:utext="${balance.create_date}">..</td>
+      <td th:utext="${balance.debit}">..</td>
+      <td th:utext="${balance.credit}">..</td>
+      <td th:utext="${balance.amount}">..</td>
+      <td>
+        <form th:action="@{/deleteBalance}" method="post">
+          <input type="hidden" name="id" th:value="${balance.id}" />
+          <input type="submit" value="Delete" class="btn btn-danger" />
+        </form>
+      </td>
+    </tr>
+  </table>
+</div>
+<br/><br/>
+
+<th:block th:include="/header"></th:block>
+</body>
+</html>

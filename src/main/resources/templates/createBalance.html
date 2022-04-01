@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Create Balance</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+
+<body>
+<th:block th:include="/header"></th:block>
+<h1>Create Balance</h1>
+
+<form th:action="@{/saveBalance}" method="POST">
+  <table>
+    <tr>
+      <th>Start Date</th>
+      <th>
+        <input type="text" th:name="createDateStart"/>
+      </th>
+    </tr>
+    <tr>
+      <th>End Date</th>
+      <th>
+        <input type="text" th:name="createDateEnd"/>
+      </th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>
+        <input type="submit" value="Create"/>
+      </th>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

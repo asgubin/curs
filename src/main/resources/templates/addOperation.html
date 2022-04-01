@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Add Operations</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+
+<body>
+<th:block th:include="/header"></th:block>
+<h1>Create Operation</h1>
+
+<form th:action="@{/saveOperation}" method="POST">
+    <table>
+      <tr>
+        <th>Article</th>
+        <th>
+          <select th:name="article_id">
+            <option value="0">Select Article</option>
+            <option th:each="article : ${articles}" th:value="${article.id}" th:text="${article.name}"></option>
+          </select>
+        </th>
+      </tr>
+      <tr>
+        <th>Debit</th>
+        <th>
+          <input type="text" th:name="debit"/>
+        </th>
+      </tr>
+      <tr>
+        <th>Credit</th>
+        <th>
+          <input type="text" th:name="credit"/>
+        </th>
+      </tr>
+      <tr>
+        <th>Create Date</th>
+        <th>
+          <input type="text" th:name="create_date"/>
+        </th>
+      </tr>
+      <tr>
+        <th></th>
+        <th></th>
+        <th>
+          <input type="submit" value="Add"/>
+        </th>
+      </tr>
+    </table>
+</form>
+</body>
+</html>
